@@ -7,16 +7,16 @@ import TodoFooter from '../TodoFooter';
 import TodoList from '../TodoList';
 import TodoHeader from '../TodoHeader';
 import TodoInput from '../TodoInput';
-import { ITodoStore } from '../../types/models/index';
+import { IRootStore } from '../../types/models/index';
 
 function TodoApp(): React.ReactElement {
-  const todoStore: ITodoStore = useContext(StoreContext) as ITodoStore;
+  const rootStore: IRootStore = useContext(StoreContext) as IRootStore;
 
   return (
     <section>
       <TodoHeader />
-      <TodoInput store={todoStore} />
-      <TodoList store={todoStore} />
+      <TodoInput store={rootStore} />
+      <TodoList store={rootStore} />
       <TodoFooter />
     </section>
   );

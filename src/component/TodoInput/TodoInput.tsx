@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { ITodoStore } from '../../types/models/index';
+import { IRootStore } from '../../types/models/index';
 
-function TodoInput({ store }: { store: ITodoStore }): React.ReactElement {
+function TodoInput({ store: rootStore }: { store: IRootStore }): React.ReactElement {
   const [content, setContent] = useState('');
-  const { addContent } = store;
+  const { addContent } = rootStore.todoStore;
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setContent(e.target.value);

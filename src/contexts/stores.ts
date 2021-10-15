@@ -1,6 +1,6 @@
 import React from 'react';
-import TodoStore from '../stores/TodoStore';
+import RootStore from '../stores/RootStore';
 
-const StoreContext = React.createContext<TodoStore | undefined>(undefined);
+const StoreContext = React.createContext<RootStore | undefined>(undefined);
 
 export default StoreContext;

@@ -2,10 +2,10 @@ import React from 'react';
 import { observer } from 'mobx-react-lite';
 
 import TodoItem from '../TodoItem';
-import { ITodoStore } from '../../types/models/index';
+import { IRootStore } from '../../types/models/index';
 
-function TodoList({ store }: { store: ITodoStore }): React.ReactElement {
-  const { todoList, toggleCheck, removeContent } = store;
+function TodoList({ store: rootStore }: { store: IRootStore }): React.ReactElement {
+  const { todoList, toggleCheck, removeContent } = rootStore.todoStore;
 
   const onClickHandler = (e: React.MouseEvent, id: number) => {
     const currentTarget = e.target as HTMLElement;

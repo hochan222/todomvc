@@ -6,11 +6,11 @@ import StoreContext from './contexts/stores';
 
 import 'todomvc-common/base.css';
 import 'todomvc-app-css/index.css';
-import TodoStore from './stores/TodoStore';
+import RootStore from './stores/RootStore';
 
 ReactDOM.render(
   <React.StrictMode>
-    <StoreContext.Provider value={new TodoStore()}>
+    <StoreContext.Provider value={new RootStore()}>
       <TodoApp />
     </StoreContext.Provider>
   </React.StrictMode>,

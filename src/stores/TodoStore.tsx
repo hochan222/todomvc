@@ -1,17 +1,20 @@
 import { action, makeObservable, observable } from 'mobx';
 import { ITodoContext } from '../types/models';
+import { IRootStore } from '../types/models/index';
 
 class TodoStore {
+  rootStore: IRootStore;
   todoList: ITodoContext[] = [];
   increaseId = 0;
 
-  constructor() {
+  constructor(rootStore: IRootStore) {
     makeObservable(this, {
       todoList: observable,
       addContent: action,
       toggleCheck: action,
       removeContent: action,
     });
+    this.rootStore = rootStore;
   }
 
   addContent = (content: string): void => {

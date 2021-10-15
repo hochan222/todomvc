@@ -10,6 +10,10 @@ export interface ITodoItem extends ITodoContext {
   onClickHandler: (e: React.MouseEvent, id: number) => void;
 }
 
+export interface IRootStore {
+  todoStore: ITodoStore;
+}
+
 export interface ITodoStore {
   todoList: ITodoContext[];
   increaseId: number;
