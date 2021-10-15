@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { IRootStore } from '../types/models';
+import { ITodoStore } from '../../types/models/index';
 
-function TodoInput({ store: rootStore }: { store: IRootStore }): React.ReactElement {
+function TodoInput({ store }: { store: ITodoStore }): React.ReactElement {
   const [content, setContent] = useState('');
-  const { addContent } = rootStore.todoStore;
+  const { addContent } = store;
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setContent(e.target.value);
@@ -13,6 +13,7 @@ function TodoInput({ store: rootStore }: { store: IRootStore }): React.ReactElem
   const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === 'Enter') {
       addContent(content);
+      setContent('');
     }
   };
 

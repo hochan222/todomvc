@@ -7,12 +7,7 @@ export interface ITodoContext {
 }
 
 export interface ITodoItem extends ITodoContext {
-  removeButtonHandler: (e: React.MouseEvent) => void;
-  checkContentHandler: (e: React.MouseEvent) => void;
-}
-
-export interface IRootStore {
-  todoStore: ITodoStore;
+  onClickHandler: (e: React.MouseEvent) => void;
 }
 
 export interface ITodoStore {

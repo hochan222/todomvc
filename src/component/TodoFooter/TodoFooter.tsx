@@ -1,4 +1,5 @@
 import React from 'react';
+import { observer } from 'mobx-react-lite';
 
 function TodoFooter(): React.ReactElement {
   return (
@@ -28,4 +29,4 @@ function TodoFooter(): React.ReactElement {
   );
 }
 
-export default TodoFooter;
+export default observer(TodoFooter);

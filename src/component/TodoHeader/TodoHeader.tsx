@@ -1,4 +1,5 @@
 import React from 'react';
+import { observer } from 'mobx-react-lite';
 
 function TodoHeader(): React.ReactElement {
   return (
@@ -8,4 +9,4 @@ function TodoHeader(): React.ReactElement {
   );
 }
 
-export default TodoHeader;
+export default observer(TodoHeader);
