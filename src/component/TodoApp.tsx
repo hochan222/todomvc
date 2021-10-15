@@ -6,14 +6,14 @@ import TodoList from './TodoList';
 import TodoHeader from './TodoHeader';
 import TodoInput from './TodoInput';
 
-function TodoApp() {
+function TodoApp(): React.ReactElement {
   return (
-    <div>
+    <section>
       <TodoHeader />
       <TodoInput />
       <TodoList />
       <TodoFooter />
-    </div>
+    </section>
   );
 }
 

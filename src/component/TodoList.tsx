@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TodoHeader(): React.ReactElement {
+function TodoList(): React.ReactElement {
   return (
     <section className="main">
       <input id="toggle-all" className="toggle-all" type="checkbox" />
@@ -18,4 +18,4 @@ function TodoHeader(): React.ReactElement {
   );
 }
 
-export default TodoHeader;
+export default TodoList;
