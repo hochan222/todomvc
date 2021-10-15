@@ -29,10 +29,14 @@ class TodoStore {
   };
 
   removeContent = (id: number): void => {
-    const targetId = this.todoList.findIndex((v) => v.id === id);
+    const targetId = this.findIndex(id);
     if (this.checkId(targetId)) {
       this.removeTodoItem(targetId);
     }
+  };
+
+  findIndex = (id: number): number => {
+    return this.todoList.findIndex((item) => item.id === id);
   };
 
   checkId = (targetId: number): boolean => {
