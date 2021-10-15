@@ -5,10 +5,15 @@ import TodoItem from '../TodoItem';
 import { ITodoStore } from '../../types/models/index';
 
 function TodoList({ store }: { store: ITodoStore }): React.ReactElement {
-  const { todoList } = store;
+  const { todoList, toggleCheck } = store;
 
-  const onClickHandler = (e: React.MouseEvent) => {
-    console.log(e);
+  const onClickHandler = (e: React.MouseEvent, id: number) => {
+    const currentTarget = e.target as HTMLElement;
+
+    if (currentTarget.classList.contains('toggle')) {
+      toggleCheck(id);
+    }
+    console.log(currentTarget?.classList);
   };
 
   return (

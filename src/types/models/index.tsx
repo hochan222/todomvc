@@ -7,7 +7,7 @@ export interface ITodoContext {
 }
 
 export interface ITodoItem extends ITodoContext {
-  onClickHandler: (e: React.MouseEvent) => void;
+  onClickHandler: (e: React.MouseEvent, id: number) => void;
 }
 
 export interface ITodoStore {

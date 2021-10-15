@@ -9,6 +9,7 @@ class TodoStore {
     makeObservable(this, {
       todoList: observable,
       addContent: action,
+      toggleCheck: action,
       removeContent: action,
     });
   }
