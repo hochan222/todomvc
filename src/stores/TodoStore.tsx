@@ -8,7 +8,7 @@ class TodoStore {
   increaseId: number;
 
   constructor(rootStore: IRootStore) {
-    const { todoList, increaseId } = this.getLocalStorage();
+    const { todoList, increaseId } = this.getLocalStorage() || {};
     this.todoList = todoList || [];
     this.increaseId = increaseId || 0;
     makeObservable(this, {
