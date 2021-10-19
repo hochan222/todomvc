@@ -15,6 +15,7 @@ class TodoStore {
       toggleCheck: action,
       toggleAllComplete: action,
       removeContent: action,
+      removeAllContents: action,
     });
     this.rootStore = rootStore;
   }
@@ -55,6 +56,11 @@ class TodoStore {
     if (this.checkId(targetId)) {
       this.removeTodoItem(targetId);
     }
+    this.setLocalStorage(this.todoList);
+  };
+
+  removeAllContents = (): void => {
+    this.todoList = [];
     this.setLocalStorage(this.todoList);
   };
 
