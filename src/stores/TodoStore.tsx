@@ -13,7 +13,7 @@ class TodoStore {
       todoList: observable,
       addContent: action,
       toggleCheck: action,
-      toggleAllComplete: action,
+      toggleAllCheck: action,
       removeContent: action,
       removeAllContents: action,
     });
@@ -46,8 +46,8 @@ class TodoStore {
     this.setLocalStorage(this.todoList);
   };
 
-  toggleAllComplete = (): void => {
-    this.todoList = this.todoList.map((item) => ({ ...item, checked: true }));
+  toggleAllCheck = (check: boolean): void => {
+    this.todoList = this.todoList.map((item) => ({ ...item, checked: !check }));
     this.setLocalStorage(this.todoList);
   };
 

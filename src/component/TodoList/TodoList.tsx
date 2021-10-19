@@ -3,10 +3,8 @@ import { observer } from 'mobx-react-lite';
 
 import TodoItem from '../TodoItem';
 import { ITodoList } from '../../types/models/index';
-import { toJS } from 'mobx';
 
 const TodoList = ({ todoList, onClickHandler }: ITodoList): React.ReactElement => {
-  console.log(toJS(todoList));
   return (
     <>
       <ul className="todo-list">
