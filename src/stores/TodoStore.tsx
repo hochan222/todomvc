@@ -1,14 +1,16 @@
 import { action, makeObservable, observable } from 'mobx';
 import { ITodoContext } from '../types/models';
-import { IRootStore } from '../types/models/index';
+import { IRootStore, ILocalStorage } from '../types/models/index';
 
 class TodoStore {
   rootStore: IRootStore;
   todoList: ITodoContext[];
-  increaseId = 0;
+  increaseId: number;
 
   constructor(rootStore: IRootStore) {
-    this.todoList = this.getLocalStorage();
+    const { todoList, increaseId } = this.getLocalStorage();
+    this.todoList = todoList || [];
+    this.increaseId = increaseId || 0;
     makeObservable(this, {
       todoList: observable,
       addContent: action,
@@ -20,12 +22,12 @@ class TodoStore {
     this.rootStore = rootStore;
   }
 
-  private getLocalStorage = (): ITodoContext[] => {
-    return JSON.parse(localStorage.getItem('todoList') as string) || [];
+  private getLocalStorage = (): ILocalStorage => {
+    return JSON.parse(localStorage.getItem('todoList') as string);
   };
 
-  private setLocalStorage = (todoList: ITodoContext[]): void => {
-    localStorage.setItem('todoList', JSON.stringify(todoList));
+  private setLocalStorage = (): void => {
+    localStorage.setItem('todoList', JSON.stringify({ todoList: this.todoList, increaseId: this.increaseId }));
   };
 
   getLeftItems = (): number => {
@@ -35,7 +37,7 @@ class TodoStore {
   addContent = (content: string): void => {
     this.todoList.push({ id: this.increaseId, content: content, checked: false });
     this.increaseId += 1;
-    this.setLocalStorage(this.todoList);
+    this.setLocalStorage();
   };
 
   toggleCheck = (id: number): void => {
@@ -43,12 +45,12 @@ class TodoStore {
     if (this.checkId(targetId)) {
       this.todoList[targetId].checked = !this.todoList[targetId].checked;
     }
-    this.setLocalStorage(this.todoList);
+    this.setLocalStorage();
   };
 
   toggleAllCheck = (check: boolean): void => {
     this.todoList = this.todoList.map((item) => ({ ...item, checked: !check }));
-    this.setLocalStorage(this.todoList);
+    this.setLocalStorage();
   };
 
   removeContent = (id: number): void => {
@@ -56,12 +58,12 @@ class TodoStore {
     if (this.checkId(targetId)) {
       this.removeTodoItem(targetId);
     }
-    this.setLocalStorage(this.todoList);
+    this.setLocalStorage();
   };
 
   removeAllContents = (): void => {
     this.todoList = [];
-    this.setLocalStorage(this.todoList);
+    this.setLocalStorage();
   };
 
   findIndex = (id: number): number => {

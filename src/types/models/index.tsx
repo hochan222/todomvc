@@ -30,3 +30,8 @@ export interface ITodoStore {
   toggleAllCheck: (check: boolean) => void;
   getLeftItems: () => number;
 }
+
+export interface ILocalStorage {
+  todoList: ITodoContext[];
+  increaseId: number;
+}

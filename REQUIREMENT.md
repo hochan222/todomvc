@@ -18,6 +18,7 @@
 - [x] 남은 할일을 계산할 수 있다. (items left)
   - [x] 단수와 복수를 구분할 수 있다. (items, item)
 
-## 오류
+## 개선할 점
 
-- [ ] increasedId 캐쉬가 초기화될때, index 0 이 겹치는 문제.
+- [x] increasedId 캐쉬가 초기화될때, index 0 이 겹치는 문제.
+- [ ] `toggle-all` input을 누를 때, `All`, `Active`, `Completed`에 있는 요소만 toggle 되어야한다.

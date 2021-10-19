@@ -3,9 +3,7 @@ import { observer } from 'mobx-react-lite';
 
 const TodoToggleAllButton = ({ toggleAllCheck }: { toggleAllCheck: (check: boolean) => void }): React.ReactElement => {
   const [checkToggleAll, setCheckToggleAll] = useState<boolean>(false);
-  const toggleAllHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // const currentTarget = e.currentTarget as HTMLInputElement;
-    // console.log(currentTarget.checked, checkToggleAll);
+  const toggleAllHandler = () => {
     setCheckToggleAll((prev) => !prev);
     toggleAllCheck(checkToggleAll);
   };
