@@ -16,6 +16,7 @@ const TodoToggleAllButton = ({ toggleAllCheck }: { toggleAllCheck: (check: boole
         type="checkbox"
         checked={checkToggleAll}
         onChange={toggleAllHandler}
+        // defaultChecked={checkToggleAll}
       />
       <label htmlFor="toggle-all">Mark all as complete</label>
     </>

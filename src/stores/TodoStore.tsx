@@ -17,7 +17,7 @@ class TodoStore {
       toggleCheck: action,
       toggleAllCheck: action,
       removeContent: action,
-      removeAllContents: action,
+      removeCompletedContent: action,
     });
     this.rootStore = rootStore;
   }
@@ -61,8 +61,8 @@ class TodoStore {
     this.setLocalStorage();
   };
 
-  removeAllContents = (): void => {
-    this.todoList = [];
+  removeCompletedContent = (): void => {
+    this.todoList = this.todoList.filter((item) => item.checked === false);
     this.setLocalStorage();
   };
 

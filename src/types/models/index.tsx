@@ -25,7 +25,7 @@ export interface ITodoStore {
 
   addContent: (content: string) => void;
   removeContent: (id: number) => void;
-  removeAllContents: () => void;
+  removeCompletedContent: () => void;
   toggleCheck: (id: number) => void;
   toggleAllCheck: (check: boolean) => void;
   getLeftItems: () => number;

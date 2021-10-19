@@ -14,7 +14,7 @@ const makeTodoCountTag = (count: number): React.ReactElement => {
 };
 
 const TodoFooter = ({ store: rootStore }: { store: IRootStore }): React.ReactElement => {
-  const { getLeftItems, removeAllContents } = rootStore.todoStore;
+  const { getLeftItems, removeCompletedContent } = rootStore.todoStore;
   const leftItems = makeTodoCountTag(getLeftItems());
 
   return (
@@ -37,7 +37,7 @@ const TodoFooter = ({ store: rootStore }: { store: IRootStore }): React.ReactEle
           </a>
         </li>
       </ul>
-      <button className="clear-completed" onClick={removeAllContents}>
+      <button className="clear-completed" onClick={removeCompletedContent}>
         Clear completed
       </button>
     </footer>
