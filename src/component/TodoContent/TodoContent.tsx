@@ -20,7 +20,7 @@ const todoListFilter = (todoList: ITodoContext[]): ITodoContext[] => {
 };
 
 const TodoContent = ({ store: rootStore }: { store: IRootStore }): React.ReactElement => {
-  const { todoList, toggleCheck, removeContent } = rootStore.todoStore;
+  const { todoList, toggleCheck, removeContent, toggleAllComplete } = rootStore.todoStore;
   const selectedTodolist = todoListFilter(todoList);
 
   const onClickHandler = (e: React.MouseEvent, id: number) => {
@@ -36,7 +36,7 @@ const TodoContent = ({ store: rootStore }: { store: IRootStore }): React.ReactEl
 
   return (
     <section className="main">
-      <input id="toggle-all" className="toggle-all" type="checkbox" />
+      <input id="toggle-all" className="toggle-all" type="checkbox" onClick={toggleAllComplete} />
       <label htmlFor="toggle-all">Mark all as complete</label>
       <TodoList todoList={selectedTodolist} onClickHandler={onClickHandler} />
     </section>
