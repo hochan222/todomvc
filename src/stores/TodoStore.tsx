@@ -4,10 +4,11 @@ import { IRootStore } from '../types/models/index';
 
 class TodoStore {
   rootStore: IRootStore;
-  todoList: ITodoContext[] = [];
+  todoList: ITodoContext[];
   increaseId = 0;
 
   constructor(rootStore: IRootStore) {
+    this.todoList = this.getLocalStorage();
     makeObservable(this, {
       todoList: observable,
       addContent: action,
@@ -17,9 +18,18 @@ class TodoStore {
     this.rootStore = rootStore;
   }
 
+  getLocalStorage = (): ITodoContext[] => {
+    return JSON.parse(localStorage.getItem('todoList') as string) || [];
+  };
+
+  setLocalStorage = (todoList: ITodoContext[]): void => {
+    localStorage.setItem('todoList', JSON.stringify(todoList));
+  };
+
   addContent = (content: string): void => {
     this.todoList.push({ id: this.increaseId, content: content, checked: false });
     this.increaseId += 1;
+    this.setLocalStorage(this.todoList);
   };
 
   toggleCheck = (id: number): void => {
@@ -27,6 +37,7 @@ class TodoStore {
     if (this.checkId(targetId)) {
       this.todoList[targetId].checked = !this.todoList[targetId].checked;
     }
+    this.setLocalStorage(this.todoList);
   };
 
   removeContent = (id: number): void => {
@@ -34,6 +45,7 @@ class TodoStore {
     if (this.checkId(targetId)) {
       this.removeTodoItem(targetId);
     }
+    this.setLocalStorage(this.todoList);
   };
 
   findIndex = (id: number): number => {
