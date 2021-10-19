@@ -3,10 +3,12 @@ import { observer } from 'mobx-react-lite';
 import { IRootStore } from '../../types/models/index';
 
 const makeTodoCountTag = (count: number): React.ReactElement => {
+  const tagDescription = count > 1 ? ' items left' : ' item left';
+
   return (
     <>
       <strong>{count}</strong>
-      {' item' + (count > 1 ? 's' : '') + ' left'}
+      {tagDescription}
     </>
   );
 };

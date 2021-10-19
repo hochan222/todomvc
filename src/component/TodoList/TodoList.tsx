@@ -32,7 +32,6 @@ const TodoList = ({ store: rootStore }: { store: IRootStore }): React.ReactEleme
     if (currentTarget.classList.contains('destroy')) {
       removeContent(id);
     }
-    console.log(currentTarget?.classList);
   };
 
   return (
