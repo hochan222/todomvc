@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 
 import StoreContext from '../../contexts/stores';
 import TodoFooter from '../TodoFooter';
-import TodoList from '../TodoList';
+import TodoList from '../TodoContent';
 import TodoHeader from '../TodoHeader';
 import TodoInput from '../TodoInput';
 import { IRootStore } from '../../types/models/index';

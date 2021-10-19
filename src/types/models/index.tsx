@@ -6,6 +6,11 @@ export interface ITodoContext {
   checked: boolean;
 }
 
+export interface ITodoList {
+  todoList: ITodoContext[];
+  onClickHandler: (e: React.MouseEvent, id: number) => void;
+}
+
 export interface ITodoItem extends ITodoContext {
   onClickHandler: (e: React.MouseEvent, id: number) => void;
 }
