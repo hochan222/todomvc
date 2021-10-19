@@ -1,12 +1,23 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
+import { IRootStore } from '../../types/models/index';
 
-function TodoFooter(): React.ReactElement {
+const makeTodoCountTag = (count: number): React.ReactElement => {
+  return (
+    <>
+      <strong>{count}</strong>
+      {' item' + (count > 1 ? 's' : '') + ' left'}
+    </>
+  );
+};
+
+const TodoFooter = ({ store: rootStore }: { store: IRootStore }): React.ReactElement => {
+  const { getLeftItems } = rootStore.todoStore;
+  const leftItems = makeTodoCountTag(getLeftItems());
+
   return (
     <footer className="footer">
-      <span className="todo-count">
-        <strong>0</strong> item left
-      </span>
+      <span className="todo-count">{leftItems}</span>
       <ul className="filters">
         <li>
           <a href="/" className={'all'}>
@@ -27,6 +38,6 @@ function TodoFooter(): React.ReactElement {
       <button className="clear-completed">Clear completed</button>
     </footer>
   );
-}
+};
 
 export default observer(TodoFooter);

@@ -18,12 +18,16 @@ class TodoStore {
     this.rootStore = rootStore;
   }
 
-  getLocalStorage = (): ITodoContext[] => {
+  private getLocalStorage = (): ITodoContext[] => {
     return JSON.parse(localStorage.getItem('todoList') as string) || [];
   };
 
-  setLocalStorage = (todoList: ITodoContext[]): void => {
+  private setLocalStorage = (todoList: ITodoContext[]): void => {
     localStorage.setItem('todoList', JSON.stringify(todoList));
+  };
+
+  getLeftItems = (): number => {
+    return this.todoList.filter((item) => item.checked === false).length;
   };
 
   addContent = (content: string): void => {

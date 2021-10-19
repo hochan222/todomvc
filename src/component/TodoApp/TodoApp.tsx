@@ -17,7 +17,7 @@ function TodoApp(): React.ReactElement {
       <TodoHeader />
       <TodoInput store={rootStore} />
       <TodoList store={rootStore} />
-      <TodoFooter />
+      <TodoFooter store={rootStore} />
     </section>
   );
 }
