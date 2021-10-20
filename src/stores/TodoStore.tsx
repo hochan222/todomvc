@@ -55,8 +55,13 @@ class TodoStore {
     this.setLocalStorage();
   };
 
-  toggleAllCheck = (check: boolean): void => {
-    this.todoList = this.todoList.map((item) => ({ ...item, checked: !check }));
+  toggleAllCheck = (check: boolean, todoList: ITodoContext[]): void => {
+    this.todoList = this.todoList.map((item) => {
+      if (todoList.map((item) => item.id).includes(item.id)) {
+        return { ...item, checked: !check };
+      }
+      return item;
+    });
     this.setLocalStorage();
   };
 

@@ -30,7 +30,7 @@ export interface ITodoStore {
   removeContent: (id: number) => void;
   removeCompletedContent: () => void;
   toggleCheck: (id: number) => void;
-  toggleAllCheck: (check: boolean) => void;
+  toggleAllCheck: (check: boolean, todoList: ITodoContext[]) => void;
   getLeftItems: () => number;
 }
 

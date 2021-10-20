@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
+import { ITodoContext } from '../../types/models/index';
 
-const TodoToggleAllButton = ({ toggleAllCheck }: { toggleAllCheck: (check: boolean) => void }): React.ReactElement => {
+const TodoToggleAllButton = ({
+  toggleAllCheck,
+  selectedTodolist,
+}: {
+  toggleAllCheck: (check: boolean, todoList: ITodoContext[]) => void;
+  selectedTodolist: ITodoContext[];
+}): React.ReactElement => {
   const [checkToggleAll, setCheckToggleAll] = useState<boolean>(false);
   const toggleAllHandler = () => {
     setCheckToggleAll((prev) => !prev);
-    toggleAllCheck(checkToggleAll);
+    toggleAllCheck(checkToggleAll, selectedTodolist);
   };
 
   return (

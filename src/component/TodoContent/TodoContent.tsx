@@ -37,7 +37,7 @@ const TodoContent = ({ store: rootStore }: { store: IRootStore }): React.ReactEl
 
   return (
     <section className="main">
-      <TodoToggleAllButton toggleAllCheck={toggleAllCheck} />
+      <TodoToggleAllButton toggleAllCheck={toggleAllCheck} selectedTodolist={selectedTodolist} />
       <TodoList todoList={selectedTodolist} onClickHandler={onClickHandler} editContent={editContent} />
     </section>
   );
