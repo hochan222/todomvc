@@ -1,5 +1,6 @@
 {
   "name": "todomvc",
+  "homepage": "https://hochan222.github.io/todomvc/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
