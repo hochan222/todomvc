@@ -21,6 +21,13 @@ function TodoItem({ id, content, checked, onClickHandler, editContent }: ITodoIt
     editContent(id, itemContent);
   };
 
+  const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e?.code === 'Enter') {
+      setEditStatus((prev) => !prev);
+      editContent(id, itemContent);
+    }
+  };
+
   if (editStatus) {
     itemElement = (
       <input
@@ -30,6 +37,7 @@ function TodoItem({ id, content, checked, onClickHandler, editContent }: ITodoIt
         value={itemContent}
         onChange={onChangeHandler}
         onBlur={onBlurHandler}
+        onKeyDown={onKeyDownHandler}
       />
     );
   } else {
