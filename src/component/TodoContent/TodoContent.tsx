@@ -21,7 +21,7 @@ const todoListFilter = (todoList: ITodoContext[]): ITodoContext[] => {
 };
 
 const TodoContent = ({ store: rootStore }: { store: IRootStore }): React.ReactElement => {
-  const { todoList, toggleCheck, removeContent, toggleAllCheck } = rootStore.todoStore;
+  const { todoList, toggleCheck, removeContent, toggleAllCheck, editContent } = rootStore.todoStore;
   const selectedTodolist = todoListFilter(todoList);
 
   const onClickHandler = (e: React.MouseEvent, id: number) => {
@@ -38,7 +38,7 @@ const TodoContent = ({ store: rootStore }: { store: IRootStore }): React.ReactEl
   return (
     <section className="main">
       <TodoToggleAllButton toggleAllCheck={toggleAllCheck} />
-      <TodoList todoList={selectedTodolist} onClickHandler={onClickHandler} />
+      <TodoList todoList={selectedTodolist} onClickHandler={onClickHandler} editContent={editContent} />
     </section>
   );
 };

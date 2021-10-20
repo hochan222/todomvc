@@ -9,10 +9,12 @@ export interface ITodoContext {
 export interface ITodoList {
   todoList: ITodoContext[];
   onClickHandler: (e: React.MouseEvent, id: number) => void;
+  editContent: (id: number, content: string) => void;
 }
 
 export interface ITodoItem extends ITodoContext {
   onClickHandler: (e: React.MouseEvent, id: number) => void;
+  editContent: (id: number, content: string) => void;
 }
 
 export interface IRootStore {
@@ -24,6 +26,7 @@ export interface ITodoStore {
   increaseId: number;
 
   addContent: (content: string) => void;
+  editContent: (id: number, content: string) => void;
   removeContent: (id: number) => void;
   removeCompletedContent: () => void;
   toggleCheck: (id: number) => void;

@@ -14,6 +14,7 @@ class TodoStore {
     makeObservable(this, {
       todoList: observable,
       addContent: action,
+      editContent: action,
       toggleCheck: action,
       toggleAllCheck: action,
       removeContent: action,
@@ -37,6 +38,12 @@ class TodoStore {
   addContent = (content: string): void => {
     this.todoList.push({ id: this.increaseId, content: content, checked: false });
     this.increaseId += 1;
+    this.setLocalStorage();
+  };
+
+  editContent = (id: number, content: string): void => {
+    const targetId = this.findIndex(id);
+    this.todoList[targetId] = { ...this.todoList[targetId], content: content };
     this.setLocalStorage();
   };
 
