@@ -43,7 +43,7 @@ function TodoItem({ id, content, checked, onClickHandler, editContent }: ITodoIt
   } else {
     itemElement = (
       <div className="view">
-        <input className="toggle" type="checkbox" checked={checked} />
+        <input className="toggle" type="checkbox" checked={checked} readOnly />
         <label onDoubleClick={onDoubleClickHandler}>{content}</label>
         <button className="destroy" />
       </div>
