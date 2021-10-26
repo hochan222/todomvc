@@ -36,10 +36,10 @@ const TodoContent = ({ store: rootStore }: { store: IRootStore }): React.ReactEl
   };
 
   return (
-    <section className="main">
+    <main className="main">
       <TodoToggleAllButton toggleAllCheck={toggleAllCheck} selectedTodolist={selectedTodolist} />
       <TodoList todoList={selectedTodolist} onClickHandler={onClickHandler} editContent={editContent} />
-    </section>
+    </main>
   );
 };
 
