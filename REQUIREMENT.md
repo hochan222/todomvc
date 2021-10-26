@@ -23,3 +23,33 @@
 - [x] increasedId 캐쉬가 초기화될때, index 0 이 겹치는 문제.
 - [x] `toggle-all` input을 누를 때, `All`, `Active`, `Completed`에 있는 요소만 toggle 되어야한다.
 - [x] `Enter` 입력시 수정중인 input이 완료된다.
+- [x] 한글 입력 시 `event.code`가 두번 발생해서, 마지막 글자 한번거 todo item으로 등록되는 현상
+
+  - `keyCode`로 해결 (하지만 deprecated되긴함)
+  - isComposing
+
+    - https://github.com/facebook/react/issues/13104
+
+    ```js
+      useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      const target = e.target as HTMLInputElement;
+
+      if (!target.classList.contains('new-todo')) {
+        return;
+      }
+
+      if (e.code === 'Enter' && e.isComposing) {
+        addContent(content);
+        setContent('');
+      }
+    };
+
+    window.addEventListener('keydown', handler, false);
+    return () => window.removeEventListener('keydown', handler, false);
+    }, []);
+    ```
+
+  ```
+
+  ```

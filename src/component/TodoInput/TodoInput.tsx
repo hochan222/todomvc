@@ -11,7 +11,7 @@ function TodoInput({ store: rootStore }: { store: IRootStore }): React.ReactElem
   };
 
   const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === 'Enter') {
+    if (e.keyCode === 13) {
       addContent(content);
       setContent('');
     }
