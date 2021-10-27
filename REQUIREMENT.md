@@ -20,6 +20,7 @@
 
 ## 개선할 점
 
+- [x] react-router-dom 적용해서, gh-pages 경로 에러 수정
 - [x] increasedId 캐쉬가 초기화될때, index 0 이 겹치는 문제.
 - [x] `toggle-all` input을 누를 때, `All`, `Active`, `Completed`에 있는 요소만 toggle 되어야한다.
 - [x] `Enter` 입력시 수정중인 input이 완료된다.
