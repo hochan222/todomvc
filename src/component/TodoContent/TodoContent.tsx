@@ -1,12 +1,12 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
+import { useLocation } from 'react-router-dom';
 
 import { IRootStore, ITodoContext } from '../../types/models/index';
 import TodoList from '../TodoList';
 import TodoToggleAllButton from '../TodoToggleAllButton';
 
-const todoListFilter = (todoList: ITodoContext[]): ITodoContext[] => {
-  const pathname = window.location.pathname;
+const todoListFilter = (pathname: string, todoList: ITodoContext[]): ITodoContext[] => {
   const selectedTodolist = todoList;
 
   switch (pathname) {
@@ -22,7 +22,9 @@ const todoListFilter = (todoList: ITodoContext[]): ITodoContext[] => {
 
 const TodoContent = ({ store: rootStore }: { store: IRootStore }): React.ReactElement => {
   const { todoList, toggleCheck, removeContent, toggleAllCheck, editContent } = rootStore.todoStore;
-  const selectedTodolist = todoListFilter(todoList);
+  const location = useLocation();
+  const pathname = location.pathname;
+  const selectedTodolist = todoListFilter(pathname, todoList);
 
   const onClickHandler = (e: React.MouseEvent, id: number) => {
     const currentTarget = e.target as HTMLElement;
