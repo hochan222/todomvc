@@ -23,7 +23,7 @@ const getTodoListByPathName = (pathname: string, todoList: ITodoContext[]): ITod
 const TodoContent = ({ store: rootStore }: { store: IRootStore }): React.ReactElement => {
   const { todoList, toggleCheck, removeContent, toggleAllCheck, editContent } = rootStore.todoStore;
   const location = useLocation();
-  const pathname = location.pathname;
+  const { pathname } = location;
   const selectedTodolist = getTodoListByPathName(pathname, todoList);
 
   const onClickHandler = (e: React.MouseEvent, id: number) => {
