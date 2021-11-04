@@ -6,7 +6,7 @@ import { IRootStore, ITodoContext } from '../../types/models/index';
 import TodoList from '../TodoList';
 import TodoToggleAllButton from '../TodoToggleAllButton';
 
-const todoListFilter = (pathname: string, todoList: ITodoContext[]): ITodoContext[] => {
+const getTodoListByPathName = (pathname: string, todoList: ITodoContext[]): ITodoContext[] => {
   const selectedTodolist = todoList;
 
   switch (pathname) {
@@ -24,7 +24,7 @@ const TodoContent = ({ store: rootStore }: { store: IRootStore }): React.ReactEl
   const { todoList, toggleCheck, removeContent, toggleAllCheck, editContent } = rootStore.todoStore;
   const location = useLocation();
   const pathname = location.pathname;
-  const selectedTodolist = todoListFilter(pathname, todoList);
+  const selectedTodolist = getTodoListByPathName(pathname, todoList);
 
   const onClickHandler = (e: React.MouseEvent, id: number) => {
     const currentTarget = e.target as HTMLElement;
