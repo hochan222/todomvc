@@ -4,9 +4,8 @@ import { ITodoItem } from '../../types/models/index';
 import classNames from 'classnames';
 
 function TodoItem({ id, content, checked, onClickHandler, editContent }: ITodoItem): React.ReactElement {
-  const [editStatus, setEditStatus] = useState(false);
+  const [checkEditStatus, setEditStatus] = useState(false);
   const [itemContent, setItemContent] = useState(content);
-  let itemElement;
 
   const onDoubleClickHandler = () => {
     setEditStatus((prev) => !prev);
@@ -28,10 +27,10 @@ function TodoItem({ id, content, checked, onClickHandler, editContent }: ITodoIt
     }
   };
 
-  if (editStatus) {
-    itemElement = (
+  const makeItemElement = (checkEditStatus: boolean) => {
+    return checkEditStatus ? (
       <input
-        className={classNames({ edit: editStatus })}
+        className={classNames({ edit: checkEditStatus })}
         type="text"
         autoFocus={true}
         value={itemContent}
@@ -39,19 +38,22 @@ function TodoItem({ id, content, checked, onClickHandler, editContent }: ITodoIt
         onBlur={onBlurHandler}
         onKeyDown={onKeyDownHandler}
       />
-    );
-  } else {
-    itemElement = (
+    ) : (
       <div className="view">
         <input className="toggle" type="checkbox" checked={checked} readOnly />
         <label onDoubleClick={onDoubleClickHandler}>{content}</label>
         <button className="destroy" />
       </div>
     );
-  }
+  };
+
+  const itemElement = makeItemElement(checkEditStatus);
 
   return (
-    <li className={classNames({ completed: checked }, { editing: editStatus })} onClick={(e) => onClickHandler(e, id)}>
+    <li
+      className={classNames({ completed: checked }, { editing: checkEditStatus })}
+      onClick={(e) => onClickHandler(e, id)}
+    >
       {itemElement}
     </li>
   );
