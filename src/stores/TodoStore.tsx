@@ -31,7 +31,7 @@ class TodoStore {
     localStorage.setItem('todoList', JSON.stringify({ todoList: this.todoList, increaseId: this.increaseId }));
   };
 
-  getLeftItems = (): number => {
+  getLeftItemsLength = (): number => {
     return this.todoList.filter((item) => item.checked === false).length;
   };
 

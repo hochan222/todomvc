@@ -31,7 +31,7 @@ export interface ITodoStore {
   removeCompletedContent: () => void;
   toggleCheck: (id: number) => void;
   toggleAllCheck: (check: boolean, todoList: ITodoContext[]) => void;
-  getLeftItems: () => number;
+  getLeftItemsLength: () => number;
 }
 
 export interface ILocalStorage {

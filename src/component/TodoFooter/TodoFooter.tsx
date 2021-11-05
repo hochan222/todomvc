@@ -15,8 +15,8 @@ const makeTodoCountTag = (count: number): React.ReactElement => {
 };
 
 const TodoFooter = ({ store: rootStore }: { store: IRootStore }): React.ReactElement => {
-  const { getLeftItems, removeCompletedContent } = rootStore.todoStore;
-  const leftItems = makeTodoCountTag(getLeftItems());
+  const { getLeftItemsLength, removeCompletedContent } = rootStore.todoStore;
+  const leftItems = makeTodoCountTag(getLeftItemsLength());
 
   return (
     <footer className="footer">
